@@ -37,7 +37,7 @@ class Game
 
   def position_taken?(chosen_index)
     # will check if a certain position is occupied or not
-    (@board[chosen_index] == 'X') || (@board[chosen_index] == 'O') || @board[chosen_index] != ' '
+    (@board[chosen_index] == "X") || (@board[chosen_index] == "O") || !(@board[chosen_index] == " ")
   end
 
   def valid_move?(chosen_index)
@@ -47,10 +47,12 @@ class Game
 
   def turn_count
     # will check the count of the current player
+    @board.count{|current_player| current_player == "X" || current_player == "O"}
   end
 
   def current_player
     # will check current player turn
+    turn_count % 2 == 0 ? "X" : "O"
   end
 
   def turn

@@ -4,4 +4,3 @@ require_relative '../lib/game_methods.rb'
 
 game = Game.new
 game.play
-

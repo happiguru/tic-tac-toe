@@ -1,47 +1,17 @@
 #!/usr/bin/env ruby
-class Game
-    board = []
-    def display_board(board)
-      puts "\n"
-      puts "#{board[0]} | #{board[1]} | #{board[2]} "
-      puts '----------'
-      puts "#{board[3]} | #{board[4]} | #{board[5]} "
-      puts '----------'
-      puts "#{board[6]} | #{board[7]} | #{board[8]} "
-      puts "\n"
-    end
-  
-    def takeuser_input
-      puts 'Please enter value between 1-9'
-      user_input = gets.chomp
-      chosen_index = user_input_to_index(user_input)
-      display_board
-    end
 
-    def user_input_to_index(user_input)
-        user_input.to_i - 1
-    end
+require_relative ('../lib/game_methods.rb')
 
-    def make_a_move(board, chosen_index, player_id)
-        board[chosen_index] = player_id
-    end
+board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+#user_input = 2
+chosen_index = 2
 
-    def position_taken?(board, chosen_index)
-        if (board[chosen_index] == " ") || (board[chosen_index] == "") || (board[chosen_index] == nil)
-            return false
-        else
-            return true
-        end 
-    end
+game = Game.new
 
-    def valid_move?(board, chosen_index)
-        if chosen_index.between?(0, 8) && !position_taken?(board, chosen_index)
-            return true
-        end
-    end
-  end
+game.display_board(board)
+game.takeuser_input()
+game.user_input_to_index(user_input)
+game.valid_move?(board, chosen_index)
+game.position_taken?(board, chosen_index)
+game.make_a_move(board, chosen_index, player1 = "X")
 
-  board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  game = Game.new
-  game.display_board(board)
-  game.takeuser_input()

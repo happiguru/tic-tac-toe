@@ -51,7 +51,6 @@ class Game
 
   def current_player
     # will check current player turn
-    turn_count.even? ? 'X' : 'O'
   end
 
   def turn

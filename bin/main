@@ -3,15 +3,20 @@
 require_relative ('../lib/game_methods.rb')
 
 board = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-#user_input = 2
-chosen_index = 2
 
 game = Game.new
-
 game.display_board(board)
-game.takeuser_input()
-game.user_input_to_index(user_input)
+game.turn(board)
+
+chosen_index = 0
+user_input = 0
+
+
+
+
+
 game.valid_move?(board, chosen_index)
 game.position_taken?(board, chosen_index)
+game.user_input_to_index(user_input)
 game.make_a_move(board, chosen_index, player1 = "X")
 

@@ -18,7 +18,7 @@ class Game
 
     def get_user_input(a_index)
         puts "Please enter value between 1-9"
-        user_input = gets.strip
+        user_input = gets.chomp
         chosen_index = user_input_to_index(user_input)
         display_board(a_index) 
     end

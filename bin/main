@@ -25,6 +25,14 @@ class Game
     def make_a_move(board, chosen_index, player_id)
         board[chosen_index] = player_id
     end
+
+    def position_taken?(board, chosen_index)
+        if (board[chosen_index] == " ") || (board[chosen_index] == "") || (board[chosen_index] == nil)
+            return false
+        else
+            return true
+        end 
+    end
   end
 
   board = [0, 1, 2, 3, 4, 5, 6, 7, 8]

@@ -1,32 +1,7 @@
 #!/usr/bin/env ruby
 
-class Game
-  def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-  end
-
-  def display_board
-    puts "\n"
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts '----------'
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts '----------'
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]} "
-    puts "\n"
-  end
-
-  def user_input
-    puts 'Please enter value between 1-9'
-    user_input = Integer(gets.chomp)
-    user_input -= 1
-    chosen_index = user_input
-    puts chosen_index
-    display_board
-  end
-end
+require_relative ('../lib/game_methods.rb')
 
 game = Game.new
-puts '----------Welcome------------'
-puts '--------Tic Tac Toe----------'
-game.display_board
-game.user_input
+game.play
+

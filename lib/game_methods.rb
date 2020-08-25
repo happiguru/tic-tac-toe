@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
 
@@ -52,8 +52,7 @@ class Game
   end
 
   def update_board(board, npos)
-    #update the board each time 
- 
+    # update the board each time
   end
 end
 
@@ -68,5 +67,5 @@ class Winner
 end
 
 # rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/MethodLength

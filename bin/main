@@ -1,2 +1,43 @@
 #!/usr/bin/env ruby
-puts 'Hello  World!'
+require_relative '../lib/game_methods.rb'
+
+game = Game.new
+puts '----------Welcome------------'
+puts '--------Tic Tac Toe----------'
+game.display_board
+status = false
+win = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [6, 4, 2]
+]
+n = 0
+p1 = []
+p2 = []
+board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+while status == false && n <= 8
+  input = game.user_input(board_play, n)
+  game.update_board(board, n)
+  play = Winner.new(input)
+  play.board(n, p1, p2)
+  n += 1
+  if win.any? { |x| x == p1.sort }
+    # check if any in the array match with p1 choice
+  elsif win.any? { |x| x == p2.sort }
+    # check if any in the array match with p1 choice
+  else
+    status = false
+  end
+
+end
+
+if status == false
+  puts 'Draw!!!!!'
+  puts 'Luck next time'
+end

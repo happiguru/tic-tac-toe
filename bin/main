@@ -40,5 +40,6 @@ while status == false && n <= 8
 end
 
 if status == false
-  puts "Draw!!!!!"
+  puts 'Draw!!!!!'
+  puts 'Good luck next time'
 end

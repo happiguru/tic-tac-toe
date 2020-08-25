@@ -1,110 +1,72 @@
-class Game
-  def initialize(_board = nil)
-    @board = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-  end
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/PerceivedComplexity
 
-  WIN_COMBINATIONS = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [6, 4, 2]
-  ].freeze
+class Game
+  def initialize
+    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  end
 
   def display_board
-    # display the board
+    # print the begining board
     puts "\n"
-    puts "#{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts '----------'
-    puts "#{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts '----------'
-    puts "#{@board[6]} | #{@board[7]} | #{@board[8]} "
+    puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    puts '------------'
+    puts "  #{@board[3]} | #{@board[4]} | #{@board[5]} "
+    puts '------------'
+    puts "  #{@board[6]} | #{@board[7]} | #{@board[8]} "
     puts "\n"
   end
 
-  def user_input_to_index(user_input)
-    # convert user input to integer and match the position in the array
-    user_input.to_i - 1
-  end
-
-  def make_a_move(chosen_index, current_player)
-    # will make move of position
-    @board[chosen_index] = current_player
-  end
-
-  def position_taken?(chosen_index)
-    # will check if a certain position is occupied or not
-    (@board[chosen_index] == 'X') || (@board[chosen_index] == 'O') || @board[chosen_index] != ' '
-  end
-
-  def valid_move?(chosen_index)
-    # will check to validate user input is within the range
-    chosen_index.between?(0, 8) && !position_taken?(chosen_index)
-  end
-
-  def turn_count
-    # will check the count of the current player
-  end
-
-  def current_player
-    # will check current player turn
-    turn_count.even? ? 'X' : 'O'
-  end
-
-  def turn
-    # will keep asking for players to keep play as long as there is no winner or if the list is not yet full
-    puts 'Please enter value between 1-9'
-    user_input = gets.chomp
-    chosen_index = user_input_to_index(user_input)
-    if valid_move?(chosen_index) == true
-      make_a_move(chosen_index, current_player)
-      display_board
-    else
-      turn
+  def user_input(board, npos)
+    # get user input and do some validations
+    valid = false
+    while valid == false
+      puts 'Please enter value between 1-9'
+      n = String(npos)
+      if n.match(/[0,2,4,6,9]/)
+        puts 'Player 1:'
+      else
+        puts 'Player 2:'
+      end
+      user_input = gets.chomp
+      user_input = Integer(user_input) if user_input.match(/[a-z]/).nil?
+      if user_input.is_a?(Integer) && (1..9).include?(user_input)
+        valid = true
+        user_input = Integer(user_input)
+        if board.include?(user_input)
+          board.delete(user_input)
+          user_input -= 1
+          valid = true
+        else
+          puts 'Position givn already used!!!!'
+          valid = false
+        end
+      else
+        valid = false
+        puts 'No valid value!!'
+      end
     end
+    @chosen_index = user_input
+    @chosen_index
   end
 
-  def won?
-    # will check for the winning combination
-    WIN_COMBINATIONS.detect do |win_combination|
-    end
+  def update_board(board, npos)
+    #update the board each time 
+ 
   end
-
-  def full?
-    # will check if the board is full or not
-  end
-
-  def draw?
-    # will check when there is a draw or not
-  end
-
-  def over?
-    # will check if game is over
-  end
-
-  def winner
-    # will check winner if it is "X" or "O"
-  end
-
-  def play
-    turn until over?
-    if won?
-      # we check who the winner is
-      puts "Congratulations #{winner}!"
-    elsif draw?
-      # if there is a draw or tie
-      puts 'It was a draw game!'
-    end
-  end
-
-  # until the game is over..
-  # player will keep taking turns of the game
-  # plays the first few turns of the game
-  # if there is a winner..
-  # we will check who is the winner
-  # and congratulate them
-  # if there is a draw/tie, then print message it is a draw
 end
+
+class Winner
+  def initialize(user_input)
+    @input = user_input
+  end
+
+  def board(npos, p1c, p2c)
+    # add player unput to an array of choices form each player
+  end
+end
+
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/MethodLength

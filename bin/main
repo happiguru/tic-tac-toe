@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require_relative '../lib/game_methods.rb'
+require_relative 'lib.rb'
 
 game = Game.new
 puts '----------Welcome------------'
@@ -28,16 +28,17 @@ while status == false && n <= 8
   play.board(n, p1, p2)
   n += 1
   if win.any? { |x| x == p1.sort }
-    
+    puts 'Player 1 win!!!!!!!'
+    status = true
   elsif win.any? { |x| x == p2.sort }
-   
+    puts 'Player 2 win!!!!!!!!'
+    status = true
   else
     status = false
   end
 
 end
 
-if status == false
-  puts 'Draw!!!!!'
-  puts 'Luck next time'
+if status == false 
+   puts "Draw!!!!!"
 end

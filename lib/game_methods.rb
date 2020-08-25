@@ -28,7 +28,6 @@ class Game
     else
       puts 'No valid value!!'
       false
-
     end
   end
 
@@ -65,25 +64,5 @@ class Game
     puts '------------'
     puts "  #{board[6]} | #{board[7]} | #{board[8]} "
     puts "\n"
-  end
-end
-
-class Winner
-  attr_reader :user_input
-  attr_writer :user_input
-  attr_reader :win
-  def initialize(user_input, win)
-    @input = user_input
-    @win = win
-  end
-
-  def board(npos, p1c, p2c)
-    n = String(npos)
-    if n.match(/[0,2,4,6,9]/)
-      p1c.push(@input)
-    else
-      p2c.push(@input)
-    end
-    [p1c, p2c]
   end
 end

@@ -2,28 +2,32 @@
 require_relative '../lib/game_methods.rb'
 require_relative '../lib/winner.rb'
 
+n = 0
+board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 game = Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
 puts '----------Welcome------------'
 puts '--------Tic Tac Toe----------'
-game.display_board
+game.update_board(board)
 status = false
 win = [
   %w[X X X],
   %w[O O O]
 ]
-n = 0
 p1 = []
 p2 = []
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 while status == false && n <= 8
   input = game.user_input(board_play, n)
   game.update_board(board, n)
   play = Winner.new(input, win)
   play.board(n, p1, p2)
-  n += 1
-  status = play.desicion(board)
 
+  status = if n.to_s.match(/[0,2,4,6,9]/)
+             play.desicion(board, 'X')
+           else
+             play.desicion(board, 'O')
+           end
+  n += 1
 end
 
 if status == false

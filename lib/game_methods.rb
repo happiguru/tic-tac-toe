@@ -5,16 +5,6 @@ class Game
     @board = input
   end
 
-  def display_board
-    puts "\n"
-    puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts '------------'
-    puts "  #{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts '------------'
-    puts "  #{@board[6]} | #{@board[7]} | #{@board[8]} "
-    puts "\n"
-  end
-
   def user_input_v(user_input, board)
     if user_input.is_a?(Integer) && (1..9).include?(user_input)
       user_input = Integer(user_input)
@@ -42,7 +32,11 @@ class Game
         puts 'Player 2:'
       end
       user_input = gets.chomp
-      user_input = Integer(user_input) if user_input.match(/[a-z]/).nil?
+      if user_input.empty?
+        puts 'Type Something!!!'
+      elsif user_input.match(/[a-z]/).nil?
+        user_input = Integer(user_input)
+      end
       valid = user_input_v(user_input, board)
     end
     user_input -= 1
@@ -50,13 +44,15 @@ class Game
     @chosen_index
   end
 
-  def update_board(board, npos)
-    n = String(npos)
-    board[@chosen_index] = if n.match(/[0,2,4,6,8]/)
-                             'X'
-                           else
-                             'O'
-                           end
+  def update_board(board, npos = nil)
+    unless npos.nil?
+      n = String(npos)
+      board[@chosen_index] = if n.match(/[0,2,4,6,8]/)
+                               'X'
+                             else
+                               'O'
+                             end
+    end
     puts "\n"
     puts "  #{board[0]} | #{board[1]} | #{board[2]} "
     puts '------------'

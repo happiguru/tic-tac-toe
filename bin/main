@@ -28,9 +28,9 @@ while status == false && n <= 8
   play.board(n, p1, p2)
   n += 1
   if win.any? { |x| x == p1.sort }
-    # check if any in the array match with p1 choice
+    
   elsif win.any? { |x| x == p2.sort }
-    # check if any in the array match with p1 choice
+   
   else
     status = false
   end

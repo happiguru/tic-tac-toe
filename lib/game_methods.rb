@@ -1,7 +1,3 @@
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/PerceivedComplexity
-
 class Game
   attr_reader :board
   attr_writer :board
@@ -19,20 +15,20 @@ class Game
     puts "\n"
   end
 
-  def user_input_v(user_input,board)
+  def user_input_v(user_input, board)
     if user_input.is_a?(Integer) && (1..9).include?(user_input)
-      valid = true
       user_input = Integer(user_input)
       if board.include?(user_input)
         board.delete(user_input)
-        return valid = true
+        true
       else
         puts 'Position givn already used!!!!'
-        return valid = false
+        false
       end
     else
-      return valid = false
       puts 'No valid value!!'
+      false
+
     end
   end
 
@@ -48,7 +44,7 @@ class Game
       end
       user_input = gets.chomp
       user_input = Integer(user_input) if user_input.match(/[a-z]/).nil?
-      valid = user_input_v(user_input,board)
+      valid = user_input_v(user_input, board)
     end
     user_input -= 1
     @chosen_index = user_input
@@ -73,10 +69,10 @@ class Game
 end
 
 class Winner
-    attr_reader :user_input
-    attr_writer :user_input
-    attr_reader :win
-  def initialize(user_input,win)
+  attr_reader :user_input
+  attr_writer :user_input
+  attr_reader :win
+  def initialize(user_input, win)
     @input = user_input
     @win = win
   end
@@ -91,8 +87,3 @@ class Winner
     [p1c, p2c]
   end
 end
-
-
-# rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/MethodLength

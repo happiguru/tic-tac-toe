@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-require_relative 'lib.rb'
+require_relative '../lib/game_methods.rb'
 
-game = Game.new([1,2,3,4,5,6,7,8,9])
+game = Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
 puts '----------Welcome------------'
 puts '--------Tic Tac Toe----------'
 game.display_board
@@ -24,11 +24,11 @@ board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 while status == false && n <= 8
   input = game.user_input(board_play, n)
   game.update_board(board, n)
-  play = Winner.new(input,win)
+  play = Winner.new(input, win)
   play.board(n, p1, p2)
   n += 1
   if win.any? { |x| x == p1.sort }
-       puts 'Player 1 win!!!!!!!'
+    puts 'Player 1 win!!!!!!!'
     status = true
   elsif win.any? { |x| x == p2.sort }
     puts 'Player 2 win!!!!!!!!'

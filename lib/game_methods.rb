@@ -1,4 +1,4 @@
-# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/AbcSize
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
 
@@ -8,7 +8,6 @@ class Game
   end
 
   def display_board
-  
     puts "\n"
     puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts '------------'
@@ -19,7 +18,6 @@ class Game
   end
 
   def user_input(board, npos)
-  
     valid = false
     while valid == false
       puts 'Please enter value between 1-9'
@@ -52,7 +50,19 @@ class Game
   end
 
   def update_board(board, npos)
-    
+    n = String(npos)
+    board[@chosen_index] = if n.match(/[0,2,4,6,9]/)
+                             'X'
+                           else
+                             'O'
+                           end
+    puts "\n"
+    puts "  #{board[0]} | #{board[1]} | #{board[2]} "
+    puts '------------'
+    puts "  #{board[3]} | #{board[4]} | #{board[5]} "
+    puts '------------'
+    puts "  #{board[6]} | #{board[7]} | #{board[8]} "
+    puts "\n"
   end
 end
 
@@ -62,10 +72,17 @@ class Winner
   end
 
   def board(npos, p1c, p2c)
-   
+    n = String(npos)
+    if n.match(/[0,2,4,6,9]/)
+      p1c.push(@input)
+    else
+      p2c.push(@input)
+    end
+    [p1c, p2c]
   end
 end
 
 # rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/AbcSize
 # rubocop:enable Metrics/MethodLength
+

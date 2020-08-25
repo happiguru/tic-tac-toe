@@ -28,7 +28,7 @@ This project was split in 4 milestones, which were:
 ## Setup
 - Open Terminal
 
-- Run git clone https://github.com/happiguru/tic-tac-toe/tree/user_interface
+- Run git clone https://github.com/happiguru/tic-tac-toe/tree/stanley_b
 - Run `cd tic-tac-toe`
 - Run `ruby bin/main`
 

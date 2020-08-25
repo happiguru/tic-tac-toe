@@ -8,7 +8,7 @@ class Game
   end
 
   def display_board
-    # print the begining board
+  
     puts "\n"
     puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
     puts '------------'
@@ -19,7 +19,7 @@ class Game
   end
 
   def user_input(board, npos)
-    # get user input and do some validations
+  
     valid = false
     while valid == false
       puts 'Please enter value between 1-9'
@@ -52,7 +52,7 @@ class Game
   end
 
   def update_board(board, npos)
-    # update the board each time
+    
   end
 end
 
@@ -62,7 +62,7 @@ class Winner
   end
 
   def board(npos, p1c, p2c)
-    # add player unput to an array of choices form each player
+   
   end
 end
 

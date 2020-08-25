@@ -2,6 +2,15 @@
 require_relative '../lib/game_methods.rb'
 require_relative '../lib/winner.rb'
 
+def check_status(npos, board, win, input)
+  play = Winner.new(input, win)
+  if npos.to_s.match(/[0,2,4,6,9]/)
+    play.desicion(board, 'X')
+  else
+    play.desicion(board, 'O')
+  end
+end
+
 n = 0
 board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 game = Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
@@ -22,15 +31,11 @@ while status == false && n <= 8
   play = Winner.new(input, win)
   play.board(n, p1, p2)
 
-  status = if n.to_s.match(/[0,2,4,6,9]/)
-             play.desicion(board, 'X')
-           else
-             play.desicion(board, 'O')
-           end
+  status = check_status(n, board, win, input)
   n += 1
 end
 
-if status == false
+if status == false && check_status(n, board, win, input) == false
   puts 'Draw!!!!!'
   puts 'Good luck next time'
 end

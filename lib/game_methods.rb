@@ -1,5 +1,3 @@
-# rubocop:disable Metrics/PerceivedComplexity
-
 class Game
   attr_reader :board
   attr_writer :board
@@ -14,7 +12,7 @@ class Game
         board.delete(user_input)
         true
       else
-        puts 'Position givn already used!!!!'
+        puts 'Position given already used!!!!'
         false
       end
     else
@@ -64,5 +62,3 @@ class Game
     puts "\n"
   end
 end
-
-# rubocop:enable Metrics/PerceivedComplexity

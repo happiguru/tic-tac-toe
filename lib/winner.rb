@@ -1,5 +1,4 @@
 # rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
 
 class Winner
@@ -32,29 +31,15 @@ class Winner
                2
              end
 
-    if all_equal(board[0..2], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal(board[3..5], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal(board[6..8], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal([board[0], board[3], board[6]], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal([board[1], board[4], board[7]], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal([board[2], board[5], board[8]], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal([board[0], board[4], board[8]], sym)
-      puts "Player #{player} win !!!"
-      true
-    elsif all_equal([board[2], board[4], board[6]], sym)
-      puts "Player #{player} win !!!"
+    if all_equal(board[0..2], sym) ||
+       all_equal(board[3..5], sym) ||
+       all_equal(board[6..8], sym) ||
+       all_equal([board[0], board[3], board[6]], sym) ||
+       all_equal([board[1], board[4], board[7]], sym) ||
+       all_equal([board[2], board[5], board[8]], sym) ||
+       all_equal([board[0], board[4], board[8]], sym) ||
+       all_equal([board[2], board[4], board[6]], sym)
+      puts "Player #{player} Win !!"
       true
     else false
     end
@@ -63,4 +48,3 @@ end
 
 # rubocop:enable Metrics/PerceivedComplexity
 # rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/MethodLength

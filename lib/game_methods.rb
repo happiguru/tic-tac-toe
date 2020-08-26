@@ -1,5 +1,3 @@
-# rubocop:disable Metrics/PerceivedComplexity
-
 class Game
   attr_reader :board
   attr_writer :board
@@ -64,5 +62,3 @@ class Game
     puts "\n"
   end
 end
-
-# rubocop:enable Metrics/PerceivedComplexity

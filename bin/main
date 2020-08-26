@@ -43,6 +43,4 @@ while op == 'YES'
 
   puts 'Play again? yes/no'
   op = gets.chomp.upcase!
-
 end
-

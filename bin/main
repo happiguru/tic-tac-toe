@@ -10,32 +10,39 @@ def check_status(npos, board, win, input)
     play.desicion(board, 'O')
   end
 end
+op = 'YES'
+while op == 'YES'
+  n = 0
+  board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  game = Game.new(board)
+  puts '----------Welcome------------'
+  puts '--------Tic Tac Toe----------'
+  game.update_board(board)
+  status = false
+  win = [
+    %w[X X X],
+    %w[O O O]
+  ]
+  p1 = []
+  p2 = []
+  board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  while status == false && n <= 8
+    input = game.user_input(board_play, n)
+    game.update_board(board, n)
+    play = Winner.new(input, win)
+    play.board(n, p1, p2)
 
-n = 0
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-game = Game.new([1, 2, 3, 4, 5, 6, 7, 8, 9])
-puts '----------Welcome------------'
-puts '--------Tic Tac Toe----------'
-game.update_board(board)
-status = false
-win = [
-  %w[X X X],
-  %w[O O O]
-]
-p1 = []
-p2 = []
-board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-while status == false && n <= 8
-  input = game.user_input(board_play, n)
-  game.update_board(board, n)
-  play = Winner.new(input, win)
-  play.board(n, p1, p2)
+    status = check_status(n, board, win, input)
+    n += 1
+  end
 
-  status = check_status(n, board, win, input)
-  n += 1
+  if status == false && check_status(n, board, win, input) == false
+    puts 'Draw!!!!!'
+    puts 'Good luck next time'
+  end
+
+  puts 'Play again? yes/no'
+  op = gets.chomp.upcase!
+
 end
 
-if status == false && check_status(n, board, win, input) == false
-  puts 'Draw!!!!!'
-  puts 'Good luck next time'
-end

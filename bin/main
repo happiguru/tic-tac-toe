@@ -1,43 +1,46 @@
 #!/usr/bin/env ruby
 require_relative '../lib/game_methods.rb'
+require_relative '../lib/winner.rb'
 
-game = Game.new
-puts '----------Welcome------------'
-puts '--------Tic Tac Toe----------'
-game.display_board
-status = false
-win = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [6, 4, 2]
-]
-n = 0
-p1 = []
-p2 = []
-board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-while status == false && n <= 8
-  input = game.user_input(board_play, n)
-  game.update_board(board, n)
-  play = Winner.new(input)
-  play.board(n, p1, p2)
-  n += 1
-  if win.any? { |x| x == p1.sort }
-    # check if any in the array match with p1 choice
-  elsif win.any? { |x| x == p2.sort }
-    # check if any in the array match with p1 choice
+def check_status(npos, board, win, input)
+  play = Winner.new(input, win)
+  if npos.to_s.match(/[0,2,4,6,9]/)
+    play.desicion(board, 'X')
   else
-    status = false
+    play.desicion(board, 'O')
+  end
+end
+op = 'YES'
+while op == 'YES'
+  n = 0
+  board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  game = Game.new(board)
+  puts '----------Welcome------------'
+  puts '--------Tic Tac Toe----------'
+  game.update_board(board)
+  status = false
+  win = [
+    %w[X X X],
+    %w[O O O]
+  ]
+  p1 = []
+  p2 = []
+  board_play = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  while status == false && n <= 8
+    input = game.user_input(board_play, n)
+    game.update_board(board, n)
+    play = Winner.new(input, win)
+    play.board(n, p1, p2)
+
+    status = check_status(n, board, win, input)
+    n += 1
   end
 
-end
+  if status == false && check_status(n, board, win, input) == false
+    puts 'Draw!!!!!'
+    puts 'Good luck next time'
+  end
 
-if status == false
-  puts 'Draw!!!!!'
-  puts 'Luck next time'
+  puts 'Play again? yes/no'
+  op = gets.chomp.upcase!
 end

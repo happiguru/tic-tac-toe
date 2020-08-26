@@ -1,71 +1,67 @@
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/PerceivedComplexity
 
 class Game
-  def initialize
-    @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  attr_reader :board
+  attr_writer :board
+  def initialize(input)
+    @board = input
   end
 
-  def display_board
-    # print the begining board
-    puts "\n"
-    puts "  #{@board[0]} | #{@board[1]} | #{@board[2]} "
-    puts '------------'
-    puts "  #{@board[3]} | #{@board[4]} | #{@board[5]} "
-    puts '------------'
-    puts "  #{@board[6]} | #{@board[7]} | #{@board[8]} "
-    puts "\n"
+  def user_input_v(user_input, board)
+    if user_input.is_a?(Integer) && (1..9).include?(user_input)
+      user_input = Integer(user_input)
+      if board.include?(user_input)
+        board.delete(user_input)
+        true
+      else
+        puts 'Position given already used!!!!'
+        false
+      end
+    else
+      puts 'No valid value!!'
+      false
+    end
   end
 
   def user_input(board, npos)
-    # get user input and do some validations
     valid = false
     while valid == false
       puts 'Please enter value between 1-9'
       n = String(npos)
-      if n.match(/[0,2,4,6,9]/)
+      if n.match(/[0,2,4,6,8]/)
         puts 'Player 1:'
-      else
+      elsif n.match(/[1,3,5.7]/)
         puts 'Player 2:'
       end
       user_input = gets.chomp
-      user_input = Integer(user_input) if user_input.match(/[a-z]/).nil?
-      if user_input.is_a?(Integer) && (1..9).include?(user_input)
-        valid = true
+      if user_input.empty?
+        puts 'Type Something!!!'
+      elsif user_input.match(/[a-z]/).nil?
         user_input = Integer(user_input)
-        if board.include?(user_input)
-          board.delete(user_input)
-          user_input -= 1
-          valid = true
-        else
-          puts 'Position givn already used!!!!'
-          valid = false
-        end
-      else
-        valid = false
-        puts 'No valid value!!'
       end
+      valid = user_input_v(user_input, board)
     end
+    user_input -= 1
     @chosen_index = user_input
     @chosen_index
   end
 
-  def update_board(board, npos)
-    # update the board each time
+  def update_board(board, npos = nil)
+    unless npos.nil?
+      n = String(npos)
+      board[@chosen_index] = if n.match(/[0,2,4,6,8]/)
+                               'X'
+                             else
+                               'O'
+                             end
+    end
+    puts "\n"
+    puts "  #{board[0]} | #{board[1]} | #{board[2]} "
+    puts '------------'
+    puts "  #{board[3]} | #{board[4]} | #{board[5]} "
+    puts '------------'
+    puts "  #{board[6]} | #{board[7]} | #{board[8]} "
+    puts "\n"
   end
 end
-
-class Winner
-  def initialize(user_input)
-    @input = user_input
-  end
-
-  def board(npos, p1c, p2c)
-    # add player unput to an array of choices form each player
-  end
-end
-
 # rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Metrics/CyclomaticComplexity
-# rubocop:enable Metrics/MethodLength

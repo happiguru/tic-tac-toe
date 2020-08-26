@@ -32,16 +32,26 @@ This project was split in 4 milestones, which were:
 ## Game instructions
   The player has the option to play or to exit. If the player decides to play, these steps follow:
 - Player one is the symbol 'X' and player two is the symbol 'O'
+
 ![screenshot](./images/tic-1.png)
+
 - A 3x3 grid is displayed on the terminal and the first player chooses a number to place his symbol on that number's position
 - The players take turns in order to try to make an uninterrupted row, column or diagonal.
+
 ![screenshot](./images/tic-2png)
+
 - The player which does that first wins!
+
 ![screenshot](./images/tic-3.png)
+
 - If all spaces are chosen and there is no winner, it is considered a draw
+
 ![screenshot](./images/tic-4.png)
+
 - Once the game finish, the players have the option to restart game or exit
+
 ![screenshot](./images/tic-5.png)
+
 - Have fun!
 
 ## Authors

@@ -1,15 +1,14 @@
 # Tic Tac Toe Project
 
-Tic-Tac-Toe Game Application In Ruby
-
-> In this project, it is assigned for us to create a Tic Tac Toe game using only Ruby to increase our knowledge on the OOP concepts. 
+In this project, it is assigned for us to create a Tic Tac Toe game using only Ruby to increase our knowledge on the OOP concepts. 
 This project was split in 4 milestones, which were:
 - Setting up the project
 - Designing the user interface
 - Creating the game logic
 - Writing the game instructions
 
-> The main goal of this project is to asure I master the methods ruby provides and to learn how to replicate them using basic coding knowledge.
+The main goal of this project is to asure I master the methods ruby provides and to learn how to replicate them using basic coding knowledge.
+
 ## Live Demo
 [Live Demo Link](https://repl.it/@pastorp3/tic-tac-toe#README.md)
 
@@ -28,8 +27,17 @@ This project was split in 4 milestones, which were:
 - Run `cd tic-tac-toe`
 - Run `ruby bin/main`
 
+## Game Rules
+
+- Each player only can choose one position per turn
+- You are not allowed to select a position if another player already have a mark there
+- First player is the 'X'
+- Second player is the 'O'
+- Win how complete a line with the same symbol 'X X X' or 'O O O '
+- If nobody wins after all positions have a symbol it will be a draw Each player only can choose one position per turn
 
 ## Game instructions
+
   The player has the option to play or to exit. If the player decides to play, these steps follow:
 - Player one is the symbol 'X' and player two is the symbol 'O'
 

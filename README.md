@@ -38,7 +38,7 @@ This project was split in 4 milestones, which were:
 - A 3x3 grid is displayed on the terminal and the first player chooses a number to place his symbol on that number's position
 - The players take turns in order to try to make an uninterrupted row, column or diagonal.
 
-![screenshot](./images/tic-2png)
+![screenshot](./images/tic-2.png)
 
 - The player which does that first wins!
 

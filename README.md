@@ -11,6 +11,7 @@ This project was split in 4 milestones, which were:
 
 > The main goal of this project is to asure I master the methods ruby provides and to learn how to replicate them using basic coding knowledge.
 ## Demonstration
+-Live version (https://github.com/happiguru/tic-tac-toe/tree/game_logic)
 
 ## Screenshot
 

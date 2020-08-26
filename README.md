@@ -10,8 +10,8 @@ This project was split in 4 milestones, which were:
 - Writing the game instructions
 
 > The main goal of this project is to asure I master the methods ruby provides and to learn how to replicate them using basic coding knowledge.
-## Demonstration
--Live version (https://github.com/happiguru/tic-tac-toe/tree/game_logic)
+## Live Demo
+[Live Demo Link](https://repl.it/@pastorp3/tic-tac-toe#README.md)
 
 ## Screenshot
 
@@ -34,12 +34,12 @@ This project was split in 4 milestones, which were:
 
 ## Game instructions
   The player has the option to play or to exit. If the player decides to play, these steps follow:
-- Both players choose their names to play against each other
+- Player one is the symbol 'X' and player two is the symbol 'O'
 - A 3x3 grid is displayed on the terminal and the first player chooses a number to place his symbol on that number's position
 - The players take turns in order to try to make an uninterrupted row, column or diagonal.
 - The player which does that first wins!
 - If all spaces are chosen and there is no winner, it is considered a draw
-- On both situations above, there is the option to restart the game
+- Once the game finish, the players have the option to restart game or exit
 - Have fun!
 
 ## Authors
